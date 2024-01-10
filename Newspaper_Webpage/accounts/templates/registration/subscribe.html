@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+
+{% block title %}Subscribe{% endblock title %}
+{%block content%}
+<h2>Sign Up to Subscribe</h2>
+<form method = "post">{% csrf_token %}
+    {{ form.as_p }}
+    <button class = "btn btn-success" type = "submit">Subscribe</button>
+</form>
+{%endblock content%}
