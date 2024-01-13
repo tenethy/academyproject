@@ -2,4 +2,16 @@
 
 {% block content %}
 <h1>Breaking News</h1>
+<div class="container-fluid mt-3">
+    {% for PostArticle in filter_by_category %}
+    <div class="card md-3 shadow" style="width: 18rem;">
+        <img src="/media/{{sports.category_image}}" class="card-img-top" alt="{{sports.category_title}}">
+        <div class="card-body">
+          <h5 class="card-title"></h5>
+          <p class="card-text">warframe excaliber has won the hunger games</p>
+          <a href="" class="btn btn-primary">Read more</a>
+        </div>
+    </div>
+    {% endfor %}
+</div>
 {% endblock content %}

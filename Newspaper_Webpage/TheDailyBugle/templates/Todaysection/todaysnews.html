@@ -1,5 +1,24 @@
 {% extends "base.html" %}
-
+{% load static %}
 {% block content %}
-<h1>LATEST NEWS</h1>
+<div class="container-fluid mt-3">
+    <div class="card md-3 shadow" style="width: 18rem;">
+        <img src="/media/{{first_article.category_image}}" class="card-img-top" alt="{{first_article.title}}">
+        <div class="card-body">
+          <h5 class="card-title">{{first_article.title}}</h5>
+          <p class="card-text">today an international criminal known as 'cartel dragon' was arrested</p>
+          <a href="" class="btn btn-primary">Read more</a>
+        </div>
+    </div>
+    {% for articles in third_article %}
+    <div class="card md-3 shadow" style="width: 18rem;">
+        <img src="/media/{{articles.category_image}}" class="card-img-top" alt="{{articles.title}}">
+        <div class="card-body">
+          <h5 class="card-title">{{articles.title}}</h5>
+          <p class="card-text">warframe excaliber has won the hunger games</p>
+          <a href="" class="btn btn-primary">Read more</a>
+        </div>
+    </div>
+    {% endfor %}
+</div>
 {% endblock content %}
