@@ -9,45 +9,55 @@ class HomePageView(ListView):
     template_name = "home.html"
 
 def TodaysNewsView(request):
-    first_article = PostArticle.objects.first()
-    third_article = PostArticle.objects.all()[1:3]
+    latest_articles = PostArticle.objects.filter(category=Category.objects.get(title = 'International')).latest('date_time'), PostArticle.objects.filter(category=Category.objects.get(title = 'Sports')).latest('date_time'), PostArticle.objects.filter(category=Category.objects.get(title = 'Local')).latest('date_time'), PostArticle.objects.filter(category=Category.objects.get(title = 'Life style')).latest('date_time'), PostArticle.objects.filter(category=Category.objects.get(title = 'Pop culture')).latest('date_time'), PostArticle.objects.filter(category=Category.objects.get(title = 'Finance')).latest('date_time'), PostArticle.objects.filter(category=Category.objects.get(title = 'Business')).latest('date_time')
     return render(request,"Todaysection/todaysnews.html",{
-        'first_article':first_article,
-        'third_article':third_article,
+        'latest_articles':latest_articles,
         })
 
 def BreakingNewsView(request):
     return render(request, "Todaysection/breakingnews.html")
 
 def SportsPageView(request):
-    post_by_category = PostArticle.objects.filter(category=Category.objects.get(title = 'sports'))
+    post_by_category = PostArticle.objects.filter(category=Category.objects.get(title = 'Sports'))
     return render(request, "Explore/sports.html", {
-        'post_by_category':post_by_category
+        'post_by_category':post_by_category,
         })
 
-class PopCulturePageView(ListView):
-    model = PostArticle
-    template_name = "Explore/popculture.html"
+def PopCulturePageView(request):
+    post_by_category = PostArticle.objects.filter(category=Category.objects.get(title = 'Pop culture'))
+    return render(request, "Explore/popculture.html", {
+        'post_by_category':post_by_category,
+        })
 
-class LocalNewsPageView(ListView):
-    model = PostArticle
-    template_name = "Explore/localnews.html"
+def LocalNewsPageView(request):
+    post_by_category = PostArticle.objects.filter(category=Category.objects.get(title = 'Local'))
+    return render(request, "Explore/localnews.html", {
+        'post_by_category':post_by_category,
+        })
 
-class LifeStylePageView(ListView):
-    model = PostArticle
-    template_name = "Explore/lifestyle.html"
+def LifeStylePageView(request):
+    post_by_category = PostArticle.objects.filter(category=Category.objects.get(title = 'Life style'))
+    return render(request, "Explore/lifestyle.html", {
+        'post_by_category':post_by_category,
+        })
 
-class InternationalNewsPageView(ListView):
-    model = PostArticle
-    template_name = "Explore/internationalnews.html"
+def InternationalNewsPageView(request):
+    post_by_category = PostArticle.objects.filter(category=Category.objects.get(title = 'International'))
+    return render(request, "Explore/internationalnews.html", {
+        'post_by_category':post_by_category,
+        })
 
-class FinancePageView(ListView):
-    model = PostArticle
-    template_name = "Explore/finance.html"
+def FinancePageView(request):
+    post_by_category = PostArticle.objects.filter(category=Category.objects.get(title = 'Finance'))
+    return render(request, "Explore/finance.html", {
+        'post_by_category':post_by_category,
+        })
 
-class BusinessPageView(ListView):
-    model = PostArticle
-    template_name = "Explore/business.html"
+def BusinessPageView(request):
+    post_by_category = PostArticle.objects.filter(category=Category.objects.get(title = 'Business'))
+    return render(request, "Explore/business.html", {
+        'post_by_category':post_by_category,
+        })
 
 class ArchivesPageView(ListView):
     model = PostArticle

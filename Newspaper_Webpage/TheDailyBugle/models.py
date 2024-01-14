@@ -5,7 +5,6 @@ from turtle import title
 
 class Category(models.Model):
     title = models.CharField(max_length = 200, null = True)
-
     class Meta:
         verbose_name_plural = 'Categories'
 
@@ -14,7 +13,9 @@ class Category(models.Model):
 
 class PostArticle(models.Model):
     category = models.ForeignKey(Category, on_delete = models.CASCADE, null = True)
+
     title = models.CharField(max_length=200, null = True)
+
     author = models.ForeignKey(
         "auth.User",
         on_delete = models.CASCADE,
