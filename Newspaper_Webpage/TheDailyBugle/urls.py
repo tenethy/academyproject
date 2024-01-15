@@ -1,12 +1,12 @@
 from django.urls import path
 from django.conf import settings
 from django.conf.urls.static import static
-from .views import HomePageView, TodaysNewsView, BreakingNewsView, SportsPageView, PopCulturePageView, LocalNewsPageView, LifeStylePageView, InternationalNewsPageView, FinancePageView, BusinessPageView, ArchivesPageView
+from .views import HomePageView, TodaysNewsView, BreakingNewsView, SportsPageView, PopCulturePageView, LocalNewsPageView, LifeStylePageView, InternationalNewsPageView, FinancePageView, BusinessPageView, ArchivesPageView, PostDetailsPageView
 from . import views
 
 app_name = 'TheDailyBugle'
 urlpatterns = [
-    path('', HomePageView.as_view(), name = 'home'),
+    path('', views.HomePageView, name = 'home'),
     path('todaysnews/', views.TodaysNewsView, name = 'todaysnews'),
     path('breakingnews/', views.BreakingNewsView, name = 'breakingnews'),
     path('sportsnews/', views.SportsPageView, name = 'sportsnews'),
@@ -17,4 +17,5 @@ urlpatterns = [
     path('financenews/', views.FinancePageView, name = 'financenews'),
     path('businessnews/', views.BusinessPageView, name = 'businessnews'),
     path('archive/', ArchivesPageView.as_view(), name = 'archive'),
+    path('post_details/<int:pk>/', PostDetailsPageView.as_view(), name = 'post_details')
 ] + static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)

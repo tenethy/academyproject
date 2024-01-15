@@ -2,39 +2,14 @@
 {% load static %}
 {% block content %}
 <div class="container-fluid">
-    <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
-        <div class="carousel-inner">
-          <div class="carousel-item active">
-            <img src="media/articles/synthpolice-majesty-right.jpg" class="d-block w-100" alt="">
-          </div>
-          <div class="carousel-item">
-            <img src="..." class="d-block w-100" alt="...">
-          </div>
-          <div class="carousel-item">
-            <img src="..." class="d-block w-100" alt="...">
-          </div>
-          <div class="carousel-item active">
-            <img src="media/articles/synthpolice-majesty-right.jpg" class="d-block w-100" alt="">
-          </div>
-          <div class="carousel-item active">
-            <img src="media/articles/synthpolice-majesty-right.jpg" class="d-block w-100" alt="">
-          </div>
-          <div class="carousel-item active">
-            <img src="media/articles/synthpolice-majesty-right.jpg" class="d-block w-100" alt="">
-          </div>
-          <div class="carousel-item active">
-            <img src="media/articles/synthpolice-majesty-right.jpg" class="d-block w-100" alt="">
-          </div>
-        </div>
-        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev" aria-hidden="true">
-          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="next" aria-hidden="true">
-          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        </button>
-      </div>
-    <link rel="stylesheet" href="{% static '/CSS/images.css'%}">
-    <h1>The Daily Bugle</h1>
-    <img src="/media/articles/synthpolice-majesty-right.jpg" class="rounded float-start" alt="">
+  <link rel="stylesheet" href="{% static '/CSS/home.css'%}">
+  <h1>The Daily Bugle</h1>
+  {% for profiles in employee_pfp %}
+  <div class="profile">
+    <img class="profile-image" src="media/{{profiles.profile_image}}" alt="Profile Pic">
+    <h1 class="profile-name">{{profiles.user_name}}</h1>
+    <p class="profile-description">{{profiles.bio}}</p>
+  </div>
+  {% endfor %}
 </div>
 {% endblock content %}

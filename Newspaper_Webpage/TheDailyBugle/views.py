@@ -1,12 +1,14 @@
 from django.shortcuts import render
 from django.views.generic import ListView, DetailView
-from .models import PostArticle, Category
+from .models import PostArticle, Category, User_Profile
 
 # Create your views here.
 
-class HomePageView(ListView):
-    model = PostArticle
-    template_name = "home.html"
+def HomePageView(request):
+    employee_pfp = User_Profile.objects.all()
+    return render(request, "home.html", {
+        'employee_pfp':employee_pfp
+        })
 
 def TodaysNewsView(request):
     latest_articles = PostArticle.objects.filter(category=Category.objects.get(title = 'International')).latest('date_time'), PostArticle.objects.filter(category=Category.objects.get(title = 'Sports')).latest('date_time'), PostArticle.objects.filter(category=Category.objects.get(title = 'Local')).latest('date_time'), PostArticle.objects.filter(category=Category.objects.get(title = 'Life style')).latest('date_time'), PostArticle.objects.filter(category=Category.objects.get(title = 'Pop culture')).latest('date_time'), PostArticle.objects.filter(category=Category.objects.get(title = 'Finance')).latest('date_time'), PostArticle.objects.filter(category=Category.objects.get(title = 'Business')).latest('date_time')
@@ -62,3 +64,7 @@ def BusinessPageView(request):
 class ArchivesPageView(ListView):
     model = PostArticle
     template_name = "Explore/archives.html"
+
+class PostDetailsPageView(DetailView):
+    model = PostArticle
+    template_name = "PostFunctions/post_details.html"
